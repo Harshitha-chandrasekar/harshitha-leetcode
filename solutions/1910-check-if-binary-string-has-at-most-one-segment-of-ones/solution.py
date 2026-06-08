@@ -4,5 +4,5 @@ class Solution(object):
         :type s: str
         :rtype: bool
         """
-        return '01' not in s
         
+        return '01' not in s

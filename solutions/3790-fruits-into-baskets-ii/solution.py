@@ -5,19 +5,18 @@ class Solution(object):
         :type baskets: List[int]
         :rtype: int
         """
-        n = len(fruits)
+        n = len(baskets)
         used = [False] * n
         unplaced = 0
-
-        for i in range(n):
+        
+        for fruit in fruits:
             placed = False
-            for j in range(n):
-                if not used[j] and baskets[j] >= fruits[i]:
-                    used[j] = True
+            for i in range(n):
+                if not used[i] and baskets[i] >= fruit:
+                    used[i] = True
                     placed = True
-                    break  # move to next fruit after placing
+                    break
             if not placed:
                 unplaced += 1
-
+                
         return unplaced
-

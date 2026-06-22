@@ -5,11 +5,10 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        nummap = {}
-        for i, num in enumerate(nums):
-            comp = target - num
-            if comp in nummap:
-                return [i,nummap[comp]]
-
-            nummap[num] = i
-        
+        hashmap = {}
+        for i,n in enumerate(nums):
+            diff = target-n
+            if diff in hashmap:
+                return [i,hashmap[diff]]
+            else:
+                hashmap[n]=i

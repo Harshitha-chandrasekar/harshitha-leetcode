@@ -1,18 +1,19 @@
-class Solution(object):
-    def lengthOfLongestSubstring(self, s):
-        n = len(s)
-        left = 0
-        max_length = 0
-        hash = {}
-        
-        for right in range(n):
-            ch = s[right] # current letter
-            if ch in hash and hash[ch] >= left:
-                left = hash[ch] +1
-            hash[ch] = right
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        sett = set()
+        maxl = 0
+        l = 0
+        r = 0
+        while r<len(s):
+            if s[r] not in sett:
+                sett.add(s[r])
+                r = r+1
+                maxl = max(maxl,r-l)
+            else:
+                sett.remove(s[l])
+                l = l+1
+            if l>r:
+                r = l+1
 
-            max_length = max(max_length, right- left +1)
+        return maxl
 
-        return max_length
-        
-        

@@ -1,9 +1,5 @@
-class Solution(object):
-    def eraseOverlapIntervals(self, intervals):
-        """
-        :type intervals: List[List[int]]
-        :rtype: int
-        """
+class Solution:
+    def eraseOverlapIntervals(self, intervals: List[List[int]]) -> int:
         intervals.sort()
         count = 0
         i = 0

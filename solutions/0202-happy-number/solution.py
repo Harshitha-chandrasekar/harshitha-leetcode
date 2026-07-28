@@ -1,9 +1,5 @@
-class Solution(object):
-    def isHappy(self, n):
-        """
-        :type n: int
-        :rtype: bool
-        """
+class Solution:
+    def isHappy(self, n: int) -> bool:
         seen = []
         summ = 0
         while summ not in seen:

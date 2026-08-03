@@ -1,18 +1,13 @@
-class Solution(object):
-    def reverse(self, x):
-        if x< 0:
-            y = -x
-        else:
-            y = x
-        z = 0
-        while y>0:
-            z = z*10 + y%10
-            y = y/10
-
-        if (z<-2**31) or (z> (2**31 -1)):
+class Solution:
+    def reverse(self, x: int) -> int:
+        n = abs(x)
+        rev = 0
+        while n>0:
+            rev = rev*10 + n%10
+            n = n//10
+        if rev>=math.pow(2,31)-1 or rev<-1*math.pow(2,31):
             return 0
-        elif x<0:
-            return -z
+        if x<0:
+            return -1*rev
         else:
-            return z
-        
+            return rev

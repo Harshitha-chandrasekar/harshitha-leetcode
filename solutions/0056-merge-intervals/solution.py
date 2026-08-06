@@ -1,9 +1,9 @@
 class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
-        i = 0
         intervals.sort()
-        while i+1<len(intervals):
-            if intervals[i][1]<intervals[i+1][0]:
+        i = 0
+        while i < len(intervals)-1:
+            if intervals[i][1]< intervals[i+1][0]:
                 i = i+1
             else:
                 intervals[i][0] = min(intervals[i][0],intervals[i+1][0])

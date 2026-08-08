@@ -6,12 +6,12 @@ class Solution:
                         ')':'('}
 
         for c in s:
-            if c not in dictionary.keys():
+            if c in dictionary.values():
                 stack.append(c)
             else:
                 if not stack:
                     return False
-                if stack[-1] == dictionary[c]:
+                if dictionary[c] == stack[-1]:
                     stack.pop()
                 else:
                     return False

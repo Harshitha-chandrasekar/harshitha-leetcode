@@ -1,11 +1,17 @@
 class Solution:
     def firstMissingPositive(self, nums: List[int]) -> int:
-        exists = [False] * len(nums)
-        for n in nums:
-            if 0 < n <= len(nums):
-                exists[n-1] = True
+        store = set()
+        for num in nums:
+            if num>0:
+                store.add(num)
+        if not store:
+            return 1
+        mini = min(store)
+        maxi = max(store)
+        if mini!=1:
+            return 1
+        for i in range(mini,maxi):
+            if i not in store:
+                return i
 
-        for i, e in enumerate(exists):
-            if not e:
-                return i + 1
-        return len(nums) + 1
+        return maxi+1

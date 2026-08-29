@@ -1,23 +1,19 @@
-class Solution(object):
-    def maxProduct(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
+class Solution:
+    def maxProduct(self, nums: List[int]) -> int:
         n = len(nums)
-        minimum = [('inf')]*n
-        maximum = [('-inf')]*n
-        global_max = nums[0]
-        maximum[0] = nums[0]
-        minimum[0] = nums[0]
+        maxarr = [float('-inf')]*n
+        minarr = [float('inf')]*n
+        globalmax = nums[0]
+        maxarr[0] = nums[0]
+        minarr[0] = nums[0]
 
         for i in range(1,n):
-            curr_max = max(maximum[i-1]*nums[i],minimum[i-1]*nums[i],nums[i])
-            curr_min = min(maximum[i-1]*nums[i],minimum[i-1]*nums[i],nums[i])
+            currmax = max(maxarr[i-1]*nums[i],minarr[i-1]*nums[i],nums[i])
+            currmin = min(maxarr[i-1]*nums[i],minarr[i-1]*nums[i],nums[i])
 
-            maximum[i] = max(curr_max,curr_min)
-            minimum[i] = min(curr_max,curr_min)
+            maxarr[i] = max(currmax,currmin)
+            minarr[i] = min(currmax,currmin)
 
-            global_max = max(global_max,maximum[i],minimum[i])
+            globalmax = max(currmax,globalmax)
 
-        return global_max
+        return globalmax

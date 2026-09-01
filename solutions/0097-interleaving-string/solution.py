@@ -1,11 +1,5 @@
-class Solution(object):
-    def isInterleave(self, s1, s2, s3):
-        """
-        :type s1: str
-        :type s2: str
-        :type s3: str
-        :rtype: bool
-        """
+class Solution:
+    def isInterleave(self, s1: str, s2: str, s3: str) -> bool:
         if len(s1)+len(s2) != len(s3):
             return False
 

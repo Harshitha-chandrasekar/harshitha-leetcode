@@ -1,28 +1,29 @@
-class Solution(object):
-    def longestIncreasingPath(self, matrix):
-        """
-        :type matrix: List[List[int]]
-        :rtype: int
-        """
-        dp = {}
-        rows,cols = len(matrix),len(matrix[0])
+class Solution:
+    def longestIncreasingPath(self, matrix: List[List[int]]) -> int:
+        dp ={}
+        rows = len(matrix)
+        cols = len(matrix[0])
 
-        def dfs(r,c,prev):
-            if r<0 or r == rows or c<0 or c== cols or matrix[r][c]<=prev:
+
+        def dfs(i,j,prev):
+            if i<0 or j<0 or i>=rows or j>=cols or matrix[i][j]<=prev:
                 return 0
 
-            if (r,c) in dp:
-                return dp[(r,c)]
-            res = 1
-            res = max(res,1+dfs(r+1,c,matrix[r][c]))
-            res = max(res,1+dfs(r-1,c,matrix[r][c]))
-            res = max(res,1+dfs(r,c+1,matrix[r][c]))
-            res = max(res,1+dfs(r,c-1,matrix[r][c]))
-            dp[(r,c)] = res
-            return res
+            if (i,j) in dp:
+                return dp[(i,j)]
 
+            curr = matrix[i][j]
+            res = 1
+            res = max(res,1+dfs(i+1,j,curr))
+            res = max(res,1+dfs(i-1,j,curr))
+            res = max(res,1+dfs(i,j-1,curr))
+            res = max(res,1+dfs(i,j+1,curr))
+
+            dp[(i,j)] = res
+            return res
+        
         for i in range(rows):
             for j in range(cols):
-                dp[(i,j)] = dfs(i,j,-1) 
-   
+                dp[(i,j)] = dfs(i,j,-1)
+
         return max(dp.values())

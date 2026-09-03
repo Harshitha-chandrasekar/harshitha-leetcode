@@ -1,10 +1,5 @@
-class Solution(object):
-    def isMatch(self, s, p):
-        """
-        :type s: str
-        :type p: str
-        :rtype: bool
-        """
+class Solution:
+    def isMatch(self, s: str, p: str) -> bool:
         m = len(s)
         n = len(p)
         dp = [[False]*(n+1) for _ in range(m+1)]

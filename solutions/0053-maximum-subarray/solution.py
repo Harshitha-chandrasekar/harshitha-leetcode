@@ -1,20 +1,7 @@
-class Solution(object):
-    def maxSubArray(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
-        if not nums:
-            return 0 
-        
-        curr_max = nums[0]
-        total_max = nums[0]
-        
-        for i in range(1, len(nums)):
-            current_num = nums[i]
-        
-            curr_max = max(current_num, curr_max + current_num)
+class Solution:
+    def maxSubArray(self, nums: list[int]) -> int:
+        dp = [*nums]
+        for i in range(1,len(nums)):
+            dp[i] = max(nums[i],nums[i]+dp[i-1])
 
-            total_max = max(total_max, curr_max)
-            
-        return total_max
+        return max(dp)

@@ -1,9 +1,5 @@
-class Solution(object):
-    def jump(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
+class Solution:
+    def jump(self, nums: list[int]) -> int:
         n = len(nums)
         dp = [float('inf')]*n
         dp[-1] = 0

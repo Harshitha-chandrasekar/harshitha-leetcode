@@ -1,9 +1,5 @@
-class Solution(object):
-    def checkValidString(self, s):
-        """
-        :type s: str
-        :rtype: bool
-        """
+class Solution:
+    def checkValidString(self, s: str) -> bool:
         leftMin, leftMax = 0, 0
 
         for c in s:
@@ -18,3 +14,5 @@ class Solution(object):
             if leftMin < 0:
                 leftMin = 0
         return leftMin == 0
+        
+

@@ -1,9 +1,5 @@
-class Solution(object):
-    def partitionLabels(self, s):
-        """
-        :type s: str
-        :rtype: List[int]
-        """
+class Solution:
+    def partitionLabels(self, s: str) -> list[int]:
         lastIndex = {}
         for i, c in enumerate(s):
             lastIndex[c] = i

@@ -1,22 +1,15 @@
-class Solution:
-    def isValid(self, s: str) -> bool:
+class Solution(object):
+    def isValid(self, s):
         stack = []
-        dictionary = {']':'[',
-                        '}':'{',
-                        ')':'('}
+        brackets = {'{': '}', '[': ']', '(': ')'}
 
-        for c in s:
-            if c in dictionary.values():
-                stack.append(c)
+        for ch in s:
+            if ch in brackets:
+                stack.append(ch)
+            elif stack and ch == brackets[stack[-1]]:
+                stack.pop()
             else:
-                if not stack:
-                    return False
-                if dictionary[c] == stack[-1]:
-                    stack.pop()
-                else:
-                    return False
-
-        if not stack:
-            return True
-        else:
+                return False
+        if stack != []:
             return False
+        return True
